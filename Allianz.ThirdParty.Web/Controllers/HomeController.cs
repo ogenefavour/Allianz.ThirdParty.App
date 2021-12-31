@@ -29,7 +29,7 @@ namespace Allianz.ThirdParty.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(UserVehicle thirdPartyData)
+        public async Task<IActionResult> Index(UserVehicleModel thirdPartyData)
         {
             if (ModelState.IsValid)
             {
@@ -42,12 +42,18 @@ namespace Allianz.ThirdParty.Web.Controllers
                         TempData["Message"] = "Third Party Data Could not be submitted at this moment. Try again later!";
                         return View();
                     }
+                    var mappedData = new UserVehicle()
+                    {
+                        UserId = insertUserData,
+                        VehicleModel = (int)thirdPartyData.VehicleMake == 1 ? (int)thirdPartyData.Honda : (int)thirdPartyData.Toyota,
+                        InsuranceFee = (decimal)thirdPartyData.BodyType,
+                        BodyType = thirdPartyData.BodyType.ToString(),
+                        VehicleMake = (int)thirdPartyData.VehicleMake,
+                        RegistrationNumber = thirdPartyData.RegistrationNumber
+                    };
+                    
 
-                    thirdPartyData.UserId = insertUserData;
-                    thirdPartyData.VehicleModel = (int)thirdPartyData.VehicleMake == 1 ? (int)thirdPartyData.Honda : (int)thirdPartyData.Toyota;
-                    thirdPartyData.InsuranceFee = (decimal)thirdPartyData.BodyType;
-
-                    if (await _thirdParty.LogThirdPartyData(thirdPartyData))
+                    if (await _thirdParty.LogThirdPartyData(mappedData))
                     {
                         TempData["Message"] = "Third Party Purchase Successfull!";
                         return View();

@@ -11,6 +11,7 @@ namespace Allianz.ThirdParty.Data.Model
     [Table("Users")]
     public class Users
     {
+        [Dapper.Contrib.Extensions.Key]
         public long UserId { get; set; }
 
         [Required]

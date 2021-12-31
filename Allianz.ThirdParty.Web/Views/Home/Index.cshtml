@@ -1,103 +1,121 @@
-﻿@model Allianz.ThirdParty.Data.Model.UserVehicle
+﻿@model Allianz.ThirdParty.Data.Model.UserVehicleModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@*<div class="text-center">*@
-    <h2>Third Party Policy Purchase</h2>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+<h2>Third Party Policy Purchase</h2>
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Users.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Users.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Users.FirstName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Users.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Users.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Users.LastName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Users.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Users.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Users.DateOfBirth, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Users.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Users.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Users.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Users.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Users.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Users.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="VehicleMake" class="control-label"></label>*@
-                <div class="col-md-offset-2 col-md-10">
-                    <select asp-for="VehicleMake" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.VehicleMake>()">
-                        <option>Select Vehicle Make</option>
-                    </select>
-                    <span asp-validation-for="VehicleMake" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="Honda" class="control-label"></label>*@
-                <div class="col-md-offset-2 col-md-10">
-                    <select asp-for="Honda" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.HondaModel>()">
-                        <option>Select Vehicle Model</option>
-                    </select>
-                    <span asp-validation-for="Honda" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="Toyota" class="control-label"></label>*@
-                <div class="col-md-offset-2 col-md-10">
-                    <select asp-for="Toyota" class="form-control" data_val = false asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.ToyotaModel>()">
-                        <option>Select Vehicle Model</option>
-                    </select>
-                    <span asp-validation-for="Toyota" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.RegistrationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.RegistrationNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="BodyType" class="control-label col-md-2"></label>*@
-                <div class="col-md-10">
-                    <select asp-for="BodyType" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.BodyType>()">
-                        <option>Select Body Type</option>
-                    </select>
-                    <span asp-validation-for="BodyType" class="text-danger"></span>
-                </div>
-            </div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-primary" />
-                </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Users.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Users.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Users.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
-    }
+        <div class="form-group">
+            @Html.LabelFor(model => model.Users.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Users.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Users.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Users.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Users.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Users.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Users.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Users.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Users.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Users.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Users.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Users.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*<label asp-for="VehicleMake" class="control-label"></label>*@
+            <div class="col-md-offset-2 col-md-10">
+                <select id="VehicleMake" asp-for="VehicleMake" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.VehicleMake>()">
+                    <option>Select Vehicle Make</option>
+                </select>
+                <span asp-validation-for="VehicleMake" class="text-danger"></span>
+            </div>
+        </div>
+        <div id="Honda" class="form-group" style="display: none">
+            <label asp-for="Honda" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="Honda" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.HondaModel>()">
+                    @*<option>Select Vehicle Model</option>*@
+                </select>
+                <span asp-validation-for="Honda" class="text-danger"></span>
+            </div>
+        </div>
+        <div id="Toyota" class="form-group" style="display: none">
+            <label asp-for="Toyota" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="Toyota" class="form-control" data_val=false asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.ToyotaModel>()">
+                    @*<option>Select Vehicle Model</option>*@
+                </select>
+                <span asp-validation-for="Toyota" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegistrationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RegistrationNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*<label asp-for="BodyType" class="control-label col-md-2"></label>*@
+            <div class="col-md-10">
+                <select asp-for="BodyType" class="form-control" asp-items="Html.GetEnumSelectList<Allianz.ThirdParty.Data.Enum.BodyType>()">
+                    <option>Select Body Type</option>
+                </select>
+                <span asp-validation-for="BodyType" class="text-danger"></span>
+            </div>
+        </div>
 
-@*</div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $("#VehicleMake").change(function () {
+                    if ($(this).val() == "1") {
+                        $("#Honda").show();
+                        $("#Toyota").hide();
+                    } else if ($(this).val() == "2"){
+                        $("#Toyota").show();
+                        $("#Honda").hide();
+                    } else {
+                        $("#Toyota").hide();
+                        $("#Honda").hide();
+                    }
+                });
+            });
+        });
+    </script>
+}
